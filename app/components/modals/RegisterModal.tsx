@@ -9,6 +9,8 @@ import Modal from './Modal'
 import { Search } from '../navbar/Search'
 import { Heading } from '../Heading'
 import { Input } from '../inputs/Input'
+import { toast } from 'react-hot-toast'
+import { Button } from '../Button'
 
 export function RegisterModal() {
   const registerModal = useRegisterModal()
@@ -46,8 +48,8 @@ export function RegisterModal() {
       .then(() => {
         registerModal.onClose()
       })
-      .catch((error) => {
-        console.log(error)
+      .catch((_error) => {
+        toast.error('Something went wrong.')
       })
       .finally(() => {
         setIsLoading(false)
@@ -85,6 +87,33 @@ export function RegisterModal() {
     </div>
   )
 
+  const footerContent = (
+    <div className="mt-3 flex flex-col gap-4">
+      <hr />
+      <Button
+        outline
+        label="Continue with Google"
+        icon={FcGoogle}
+        onClick={() => {}}
+      />
+      <Button
+        outline
+        label="Continue with Github"
+        icon={AiFillGithub}
+        onClick={() => {}}
+      />
+      <div className=" mt-4  flex items-center justify-center gap-2 font-light text-neutral-500">
+        <p>Already have an account?</p>
+        <p
+          onClick={registerModal.onClose}
+          className="cursor-pointer text-neutral-800 hover:underline"
+        >
+          Log in
+        </p>
+      </div>
+    </div>
+  )
+
   return (
     <Modal
       disabled={isLoading}
@@ -94,6 +123,7 @@ export function RegisterModal() {
       onClose={registerModal.onClose}
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
+      footer={footerContent}
     />
   )
 }
