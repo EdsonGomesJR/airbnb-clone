@@ -95,13 +95,13 @@ export function LoginModal() {
         outline
         label="Continue with Google"
         icon={FcGoogle}
-        onClick={() => {}}
+        onClick={() => signIn('google')}
       />
       <Button
         outline
         label="Continue with Github"
         icon={AiFillGithub}
-        onClick={() => {}}
+        onClick={() => signIn('github')}
       />
       <div className=" mt-4  flex items-center justify-center gap-2 font-light text-neutral-500">
         <p>Already have an account?</p>

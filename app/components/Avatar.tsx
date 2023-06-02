@@ -1,11 +1,13 @@
 'use client'
 
 import Image from 'next/image'
-
-export function Avatar() {
+interface AvatarProps {
+  src: string | null | undefined
+}
+export function Avatar({ src }: AvatarProps) {
   return (
     <Image
-      src="/images/placeholder.jpg"
+      src={src || '/images/placeholder.jpg'}
       className="rounded-full"
       width={30}
       height={30}
