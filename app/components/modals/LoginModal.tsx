@@ -1,7 +1,7 @@
 'use client'
 import { AiFillGithub } from 'react-icons/ai'
 import { FcGoogle } from 'react-icons/fc'
-import { useState } from 'react'
+import { useCallback, useState } from 'react'
 import { FieldValues, useForm } from 'react-hook-form'
 import useRegisterModal from '@/app/hooks/useRegisterModal'
 import Modal from './Modal'
@@ -15,8 +15,10 @@ import { useRouter } from 'next/navigation'
 
 export function LoginModal() {
   const router = useRouter()
+
   const registerModal = useRegisterModal()
   const loginModal = useLoginModal()
+
   const [isLoading, setIsLoading] = useState(false)
 
   const {
@@ -64,6 +66,11 @@ export function LoginModal() {
     })
   }
 
+  const toggle = useCallback(() => {
+    loginModal.onClose()
+    registerModal.onOpen()
+  }, [loginModal, registerModal])
+
   const bodyContent = (
     <div className="flex flex-col gap-4">
       <Heading title="Welcome back" subtitle="Login to your account!" />
@@ -104,12 +111,12 @@ export function LoginModal() {
         onClick={() => signIn('github')}
       />
       <div className=" mt-4  flex items-center justify-center gap-2 font-light text-neutral-500">
-        <p>Already have an account?</p>
+        <p>Firs time using Airbnb?</p>
         <p
-          onClick={registerModal.onClose}
+          onClick={toggle}
           className="cursor-pointer text-neutral-800 hover:underline"
         >
-          Log in
+          Create an account
         </p>
       </div>
     </div>
