@@ -7,3 +7,40 @@ body,
 :root {
   height: 100%;
 }
+body {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #e5e5e5 #f5f5f5;
+}
+
+@layer utilities {
+  .scrollbar::-webkit-scrollbar {
+    width: 14px;
+  }
+
+  .scrollbar::-webkit-scrollbar-track {
+    border-radius: 999px;
+    background: #f5f5f5;
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb {
+    background: #e5e5e5;
+    border-radius: 100vh;
+    /* border: 3px solid #f6f7ed; */
+  }
+
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgb(160, 156, 156);
+  }
+}
+
+.leaflet-bottom,
+.leaflet-control,
+.leaflet-pane,
+.leaflet-top {
+  z-index: 0 !important;
+}
