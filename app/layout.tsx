@@ -7,6 +7,7 @@ import { ToasterProvider } from './providers/ToasterProvider'
 import { LoginModal } from './components/modals/LoginModal'
 import getCurrentUser from './actions/getCurrentUser'
 import { RentModal } from './components/modals/RentModal'
+import ClientOnly from './components/ClientOnly'
 
 const nunito = Nunito({ subsets: ['latin'] })
 
@@ -24,12 +25,14 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body className={nunito.className}>
-        <ToasterProvider />
-        <RentModal />
-        <LoginModal />
-        <RegisterModal />
-        <Navbar currentUser={currentUser} />
-        {children}
+        <ClientOnly>
+          <ToasterProvider />
+          <RentModal />
+          <LoginModal />
+          <RegisterModal />
+          <Navbar currentUser={currentUser} />
+        </ClientOnly>
+        <div className="pb-20 pt-28">{children}</div>
       </body>
     </html>
   )
