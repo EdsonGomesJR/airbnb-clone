@@ -6,9 +6,9 @@ import Image from 'next/image'
 import { useCallback } from 'react'
 import { TbPhotoPlus } from 'react-icons/tb'
 
-declare global {
-  const cloudinary: any
-}
+// declare global {
+//   const cloudinary: any
+// }
 
 interface ImageUploadProps {
   onChange: (value: string) => void
