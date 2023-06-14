@@ -3,6 +3,7 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 ## Getting Started
 
 First, run the development server:
+Remember to chang OAuth in github and google to login.. http://localhost:3000 to address on vercel
 
 ```bash
 npm run dev
